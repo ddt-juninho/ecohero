@@ -1,0 +1,312 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: EcoSteps API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: challenges
+    description: Daily eco challenges
+  - name: profile
+    description: User profile and progress
+  - name: recycling
+    description: Recycling guide
+  - name: leaderboard
+    description: Leaderboard and rankings
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /challenges:
+    get:
+      operationId: getChallenges
+      tags: [challenges]
+      summary: Get today's eco challenges
+      responses:
+        "200":
+          description: List of challenges
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Challenge"
+
+  /challenges/{id}/complete:
+    post:
+      operationId: completeChallenge
+      tags: [challenges]
+      summary: Mark a challenge as completed
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Challenge completed, XP awarded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChallengeResult"
+
+  /profile:
+    get:
+      operationId: getProfile
+      tags: [profile]
+      summary: Get user profile with XP, level, streak, and badges
+      responses:
+        "200":
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+
+  /profile/stats:
+    get:
+      operationId: getProfileStats
+      tags: [profile]
+      summary: Get eco impact statistics
+      responses:
+        "200":
+          description: Eco impact stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EcoStats"
+
+  /badges:
+    get:
+      operationId: getBadges
+      tags: [profile]
+      summary: Get all badges with earned status
+      responses:
+        "200":
+          description: List of badges
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Badge"
+
+  /recycling:
+    get:
+      operationId: getRecyclingGuide
+      tags: [recycling]
+      summary: Get recycling guide categories
+      responses:
+        "200":
+          description: Recycling categories and items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RecyclingCategory"
+
+  /leaderboard:
+    get:
+      operationId: getLeaderboard
+      tags: [leaderboard]
+      summary: Get top eco users leaderboard
+      responses:
+        "200":
+          description: Leaderboard entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LeaderboardEntry"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+
+    Challenge:
+      type: object
+      required: [id, title, description, xpReward, category, icon, difficulty, completed]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        xpReward:
+          type: integer
+        ecoScore:
+          type: integer
+        category:
+          type: string
+          enum: [transport, energy, food, waste, water, shopping]
+        icon:
+          type: string
+        difficulty:
+          type: string
+          enum: [easy, medium, hard]
+        completed:
+          type: boolean
+        streak:
+          type: ["integer", "null"]
+
+    ChallengeResult:
+      type: object
+      required: [xpEarned, newTotalXp, levelUp, newBadge]
+      properties:
+        xpEarned:
+          type: integer
+        newTotalXp:
+          type: integer
+        levelUp:
+          type: boolean
+        newLevel:
+          type: ["integer", "null"]
+        newBadge:
+          type: ["string", "null"]
+
+    Profile:
+      type: object
+      required: [id, username, level, xp, xpToNextLevel, ecoScore, streak, rank, totalChallengesCompleted]
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        level:
+          type: integer
+        xp:
+          type: integer
+        xpToNextLevel:
+          type: integer
+        ecoScore:
+          type: integer
+        streak:
+          type: integer
+        rank:
+          type: integer
+        totalChallengesCompleted:
+          type: integer
+        avatarUrl:
+          type: ["string", "null"]
+        title:
+          type: string
+
+    EcoStats:
+      type: object
+      required: [co2Saved, waterSaved, plasticAvoided, treesEquivalent, challengesThisWeek, challengesThisMonth]
+      properties:
+        co2Saved:
+          type: number
+        waterSaved:
+          type: number
+        plasticAvoided:
+          type: number
+        treesEquivalent:
+          type: number
+        challengesThisWeek:
+          type: integer
+        challengesThisMonth:
+          type: integer
+
+    Badge:
+      type: object
+      required: [id, name, description, icon, earned, category]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+        earned:
+          type: boolean
+        earnedAt:
+          type: ["string", "null"]
+        category:
+          type: string
+          enum: [streak, challenge, eco_score, special]
+        rarity:
+          type: string
+          enum: [common, rare, epic, legendary]
+
+    RecyclingCategory:
+      type: object
+      required: [id, name, icon, color, items]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        icon:
+          type: string
+        color:
+          type: string
+        description:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/RecyclingItem"
+
+    RecyclingItem:
+      type: object
+      required: [id, name, canRecycle, instructions, tip]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        canRecycle:
+          type: boolean
+        instructions:
+          type: string
+        tip:
+          type: string
+        icon:
+          type: string
+
+    LeaderboardEntry:
+      type: object
+      required: [rank, username, level, xp, ecoScore, streak]
+      properties:
+        rank:
+          type: integer
+        username:
+          type: string
+        level:
+          type: integer
+        xp:
+          type: integer
+        ecoScore:
+          type: integer
+        streak:
+          type: integer
+        isCurrentUser:
+          type: boolean
+        avatarUrl:
+          type: ["string", "null"]

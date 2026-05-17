@@ -1,0 +1,117 @@
+Resumo do Projeto — EcoSteps
+
+📱 Nome do Aplicativo
+
+EcoSteps
+
+⸻
+
+🌱 Objetivo do Projeto
+
+O EcoSteps é um aplicativo educativo criado para incentivar as pessoas a cuidarem do meio ambiente através de pequenas ações diárias. O aplicativo ajuda os usuários a desenvolver hábitos ecológicos de forma simples, interativa e divertida.
+
+O principal foco do projeto é mostrar que pequenas atitudes podem gerar um grande impacto positivo no planeta.
+
+⸻
+
+💡 Problema Identificado
+
+Muitas pessoas querem ajudar o meio ambiente, mas:
+
+* não sabem por onde começar;
+* não têm conhecimento sobre reciclagem;
+* não percebem o impacto das pequenas ações do dia a dia.
+
+O aplicativo foi criado para resolver esse problema através de educação ambiental e desafios diários.
+
+⸻
+
+⚙️ Funcionamento do Aplicativo
+
+O aplicativo possui 3 funcionalidades principais:
+
+✅ 1. Desafios Ecológicos Diários
+
+O usuário recebe pequenas missões ambientais, como:
+
+* economizar água;
+* desligar luzes desnecessárias;
+* reutilizar garrafas;
+* reciclar lixo.
+
+Ao completar desafios, o usuário ganha pontos ecológicos.
+
+⸻
+
+♻️ 2. Guia de Reciclagem
+
+O aplicativo ensina:
+
+* quais materiais podem ser reciclados;
+* em qual lixeira cada item deve ser colocado;
+* formas corretas de descarte.
+
+Exemplos:
+
+* plástico → lixeira reciclável;
+* restos de comida → lixo orgânico.
+
+⸻
+
+🌍 3. Pontuação Ecológica (Eco Score)
+
+Cada ação realizada aumenta a pontuação ambiental do usuário.
+
+O aplicativo mostra:
+
+* progresso do usuário;
+* nível ecológico;
+* impacto positivo gerado.
+
+Isso incentiva o uso contínuo do aplicativo.
+
+⸻
+
+🎯 Público-Alvo
+
+O aplicativo pode ser utilizado por:
+
+* estudantes;
+* escolas;
+* famílias;
+* qualquer pessoa interessada em proteger o meio ambiente.
+
+⸻
+
+🧪 Importância Científica
+
+O projeto promove:
+
+* conscientização ambiental;
+* redução da poluição;
+* incentivo à reciclagem;
+* desenvolvimento de hábitos sustentáveis.
+
+Além disso, utiliza tecnologia para resolver um problema ambiental real.
+
+⸻
+
+🎨 Design do Aplicativo
+
+O visual do aplicativo será:
+
+* moderno;
+* simples;
+* fácil de usar.
+
+Cores principais:
+
+* verde → natureza;
+* azul → planeta e água;
+* branco → limpeza e sustentabilidade.
+
+⸻
+
+🏆 Mensagem Principal do Projeto
+
+“Pequenas ações diárias podem salvar o planeta.”

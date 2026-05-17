@@ -1,0 +1,17 @@
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
+  "workspaces": [
+    "artifacts/eco-steps"
+  ],
+ "scripts": {
+  "dev": "vite",
+  "build": "PORT=3000 vite build",
+  "preview": "vite preview"
+},
+  "private": true,
+  "devDependencies": {
+    "typescript": "~5.9.3"
+  }
+}

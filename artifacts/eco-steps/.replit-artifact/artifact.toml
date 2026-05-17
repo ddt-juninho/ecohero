@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "EcoSteps"
+version = "1.0.0"
+id = "artifacts/eco-steps"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20936
+
+[services.development]
+run = "npm run dev --workspace=@workspace/eco-steps"
+
+[services.production]
+build = [ "npm", "run", "build", "--workspace=@workspace/eco-steps" ]
+publicDir = "artifacts/eco-steps/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20936"
+BASE_PATH = "/"
