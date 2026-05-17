@@ -427,7 +427,7 @@ export default function StartScreen({ onStart }: Props) {
         }
 
         .animate-marquee {
-          animation: marquee 24s linear infinite;
+          animation: marquee 30s linear infinite;
           will-change: transform;
         }
 
